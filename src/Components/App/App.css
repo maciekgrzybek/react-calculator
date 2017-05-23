@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background: #6c939a;
+}
+.App {
+  text-align: center;
+  width: 20rem;
+  margin: 0 auto;
+  color: white;
+  margin-top: 6rem;
+}
+.Display {
+  width: 20rem;
+  background: #47565a;
+  height: 6rem;
+  text-align: right;
+  padding: 0.6rem 2rem;
+  font-size: 0.8rem;
+}
+.Button {
+  display: inline-flex;
+  width: 5rem;
+  height: 3rem;
+  padding: 10px;
+  background: #86b5bd;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #79a3aa;
+  border-bottom: 1px solid #79a3aa;
+}
+.Button:hover {
+  transform: translateY(1px);
+}
+.button-row:nth-child(2) .Button {
+  width: 20rem;
+  background: #fb6f86;
+
+}
+.button-row:nth-child(1n + 3) .Button:last-child, .button-row:nth-child(6) .Button:nth-child(3) {
+  background: #7dccda;
+}
