@@ -13,7 +13,80 @@ class App extends Component {
 			score: 0
 		}
 	}
-	
+
+	componentDidMount() {
+		window.addEventListener('keydown', this.handleKeyPress.bind(this));
+	}
+
+	handleKeyPress(e) {
+		let keyPressed =e.keyCode;
+		let pressedValue;
+		let pressedLabel;
+		console.log(keyPressed);
+		switch (keyPressed){
+			case 48:
+				pressedValue = pressedLabel = 0;
+				break;
+			case 49:
+				pressedValue = pressedLabel = 1;
+				break;
+			case 50:
+				pressedValue = pressedLabel = 2;
+				break;
+			case 51:
+				pressedValue = pressedLabel = 3;
+				break;
+			case 52:
+				pressedValue = pressedLabel = 4;
+				break;
+			case 53:
+				pressedValue = pressedLabel = 5;
+				break;
+			case 54:
+				pressedValue = pressedLabel = 6;
+				break;
+			case 55:
+				pressedValue = pressedLabel = 7;
+				break;
+			case 56:
+				pressedValue = pressedLabel = 8;
+				break;
+			case 57:
+				pressedValue = pressedLabel = 9;
+				break;
+			case 27:
+			case 67:
+			case 46:
+			case 8:
+				pressedValue = pressedLabel = 'C';
+				break;
+			case 191:
+			case 111:
+				pressedValue = '/';
+				pressedLabel = '÷';
+				break;
+			case 106:
+				pressedValue = '*';
+				pressedLabel = 'x';
+				break;
+			case 109:
+			case 189:
+				pressedValue = pressedLabel = '-';
+				break;
+			case 107:
+				pressedValue = pressedLabel = '+';
+				break;	
+			case 187:
+			case 13:
+				pressedValue = pressedLabel = '=';
+				break;		
+			default:
+				return;
+			
+		}
+		this.handleClick(pressedValue,pressedLabel);
+	}
+
 	displayNum(childValue,childLabel){
 		if(!this.state.display || this.state.calculated) {
 			this.setState({calculated: false})
@@ -46,6 +119,7 @@ class App extends Component {
 	clear(){
 		this.setState({display: 0})
 	}
+
 	handleClick(value,label) {
 		if (value === 'C') {
 			return this.clear()
@@ -58,7 +132,7 @@ class App extends Component {
 
 	render() {
 		return (
-			<div className="App">
+			<div className="App" >
 				<Display display={this.state.display}/>
 				<div className="button-row">
 					{this.renderButton('C','C')}	
