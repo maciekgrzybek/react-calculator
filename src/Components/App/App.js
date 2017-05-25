@@ -17,77 +17,78 @@ class App extends Component {
 	componentDidMount() {
 		window.addEventListener('keydown', this.handleKeyPress.bind(this));
 	}
+	
 
 	handleKeyPress(e) {
-		let keyPressed =e.keyCode;
+		let keyPressed =e.key;
 		let pressedValue;
 		let pressedLabel;
-		console.log(keyPressed);
 		if(!e.shiftKey){
 			switch (keyPressed){
-				case 48:
+				case '0':
 					pressedValue = pressedLabel = 0;
 					break;
-				case 49:
+				case '1':
 					pressedValue = pressedLabel = 1;
 					break;
-				case 50:
+				case '2':
 					pressedValue = pressedLabel = 2;
 					break;
-				case 51:
+				case '3':
 					pressedValue = pressedLabel = 3;
 					break;
-				case 52:
+				case '4':
 					pressedValue = pressedLabel = 4;
 					break;
-				case 53:
+				case '5':
 					pressedValue = pressedLabel = 5;
 					break;
-				case 54:
+				case '6':
 					pressedValue = pressedLabel = 6;
 					break;
-				case 55:
+				case '7':
 					pressedValue = pressedLabel = 7;
 					break;
-				case 56:
+				case '8':
 					pressedValue = pressedLabel = 8;
 					break;
-				case 57:
+				case '9':
 					pressedValue = pressedLabel = 9;
 					break;
-				case 27:
-				case 67:
-				case 46:
-				case 8:
+				case 'c':
+				case 'Backspace':
+				case 'Escape':
+				case 'Delete':
 					pressedValue = pressedLabel = 'C';
 					break;
-				case 191:
-				case 111:
+				case '/':
 					pressedValue = '/';
 					pressedLabel = '÷';
 					break;
-				case 106:
+				case '*':
 					pressedValue = '*';
 					pressedLabel = 'x';
 					break;
-				case 109:
-				case 189:
+				case '-':
 					pressedValue = pressedLabel = '-';
 					break;
-				case 107:
+				case '+':
 					pressedValue = pressedLabel = '+';
 					break;	
-				case 187:
-				case 13:
+				case '=':
+				case 'Enter':
 					pressedValue = pressedLabel = '=';
-					break;		
+					break;
+				case '.':
+				case ',':
+					pressedValue = pressedLabel = '.';
+					break;			
 				default:
 					return;
-				
 			}
 		} else if (e.shiftKey) {
 			switch (keyPressed){
-				case 187:
+				case '+':
 					pressedValue = pressedLabel = '+';
 					break;			
 				default:
