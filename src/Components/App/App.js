@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import math from 'mathjs';
-import Display from '../Display/Display';
-import Button from '../Button/Button';
-import './App.css';
+import React, { Component } from 'react'
+import math from 'mathjs'
+import Display from '../Display/Display'
+import Button from '../Button/Button'
+import './App.css'
 
 class App extends Component {
 	constructor(){
@@ -18,70 +18,95 @@ class App extends Component {
 		window.addEventListener('keydown', this.handleKeyPress.bind(this));
 	}
 	
+	animateButton(wordLabel){
+		var el = document.querySelector(`.Button-${wordLabel}`);
+		el.style.bottom = "-1px";
+		setTimeout(() => {return el.style.bottom = "0px";},100);
+		
+	}
 
 	handleKeyPress(e) {
-		let keyPressed =e.key;
+		let keyPressed = e.key;
 		let pressedValue;
 		let pressedLabel;
+		let wordLabel;
+		console.log(keyPressed)
 		if(!e.shiftKey){
 			switch (keyPressed){
 				case '0':
 					pressedValue = pressedLabel = 0;
+					wordLabel = 'zero';
 					break;
 				case '1':
 					pressedValue = pressedLabel = 1;
+					wordLabel = 'one';
 					break;
 				case '2':
 					pressedValue = pressedLabel = 2;
+					wordLabel = 'two';
 					break;
 				case '3':
 					pressedValue = pressedLabel = 3;
+					wordLabel = 'three';
 					break;
 				case '4':
 					pressedValue = pressedLabel = 4;
+					wordLabel = 'four';
 					break;
 				case '5':
 					pressedValue = pressedLabel = 5;
+					wordLabel = 'five';
 					break;
 				case '6':
 					pressedValue = pressedLabel = 6;
+					wordLabel = 'six';
 					break;
 				case '7':
 					pressedValue = pressedLabel = 7;
+					wordLabel = 'seven';
 					break;
 				case '8':
 					pressedValue = pressedLabel = 8;
+					wordLabel = 'eight';
 					break;
 				case '9':
 					pressedValue = pressedLabel = 9;
+					wordLabel = 'nine';
 					break;
 				case 'c':
 				case 'Backspace':
 				case 'Escape':
 				case 'Delete':
 					pressedValue = pressedLabel = 'C';
+					wordLabel = 'cancel';
 					break;
 				case '/':
 					pressedValue = '/';
 					pressedLabel = '÷';
+					wordLabel = 'divide';
 					break;
 				case '*':
 					pressedValue = '*';
 					pressedLabel = 'x';
+					wordLabel = 'multiply';
 					break;
 				case '-':
 					pressedValue = pressedLabel = '-';
+					wordLabel = 'minus';
 					break;
 				case '+':
 					pressedValue = pressedLabel = '+';
+					wordLabel = 'plus';
 					break;	
 				case '=':
 				case 'Enter':
 					pressedValue = pressedLabel = '=';
+					wordLabel = 'equals';
 					break;
 				case '.':
 				case ',':
 					pressedValue = pressedLabel = '.';
+					wordLabel = 'dot';
 					break;			
 				default:
 					return;
@@ -90,6 +115,7 @@ class App extends Component {
 			switch (keyPressed){
 				case '+':
 					pressedValue = pressedLabel = '+';
+					wordLabel = 'plus';
 					break;			
 				default:
 					return;
@@ -97,7 +123,10 @@ class App extends Component {
 			}
 		}
 		this.handleClick(pressedValue,pressedLabel);
+		this.animateButton(wordLabel);
 	}
+
+
 
 	displayNum(childValue,childLabel){
 		if(!this.state.display || this.state.calculated) {
@@ -122,9 +151,9 @@ class App extends Component {
 
 	}
 
-	renderButton(value,label){
+	renderButton(value,label,wordLabel){
 		return (
-			<Button onClick={() => this.handleClick(value,label)} value={value} label={label}  />
+			<Button  onClick={() => this.handleClick(value,label,wordLabel)} value={value} label={label} wordLabel={wordLabel} />
 		)
 	}
 
@@ -144,35 +173,35 @@ class App extends Component {
 
 	render() {
 		return (
-			<div className="App" >
+			<div className="App">
 				<Display display={this.state.display}/>
 				<div className="button-row">
-					{this.renderButton('C','C')}	
+					{this.renderButton('C','C','cancel')}	
 				</div>
 				<div className="button-row">
-					{this.renderButton(7,7)}
-					{this.renderButton(8,8)}
-					{this.renderButton(9,9)}
-					{this.renderButton('/','÷')}
+					{this.renderButton(7,7,'seven')}
+					{this.renderButton(8,8,'eight')}
+					{this.renderButton(9,9,'nine')}
+					{this.renderButton('/','÷','divide')}
 				</div>
 				<div className="button-row">
-					{this.renderButton(4,4)}
-					{this.renderButton(5,5)}
-					{this.renderButton(6,6)}
-					{this.renderButton('*','x')}
+					{this.renderButton(4,4,'four')}
+					{this.renderButton(5,5,'five')}
+					{this.renderButton(6,6,'six')}
+					{this.renderButton('*','x','multiply')}
 
 				</div>
 				<div className="button-row">
-					{this.renderButton(1,1)}
-					{this.renderButton(2,2)}
-					{this.renderButton(3,3)}
-					{this.renderButton('-','-')}
+					{this.renderButton(1,1,'one')}
+					{this.renderButton(2,2,'two')}
+					{this.renderButton(3,3,'three')}
+					{this.renderButton('-','-','minus')}
 				</div>
 				<div className="button-row">
-					{this.renderButton(0,0)}
-					{this.renderButton('.','.')}
-					{this.renderButton('+','+')}
-					{this.renderButton('=','=')}
+					{this.renderButton(0,0,'zero')}
+					{this.renderButton('.','.','dot')}
+					{this.renderButton('+','+','plus')}
+					{this.renderButton('=','=','equals')}
 				</div>
 				<h1>React calculator</h1>
 			</div>
@@ -180,4 +209,4 @@ class App extends Component {
 	}
 }
 
-export default App;
+export default App

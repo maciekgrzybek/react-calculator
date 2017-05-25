@@ -21,6 +21,7 @@ body {
   overflow: scroll;
 }
 .Button {
+  position: relative;
   display: inline-flex;
   width: 5rem;
   height: 3rem;
@@ -42,4 +43,8 @@ body {
 }
 .button-row:nth-child(1n + 3) .Button:last-child, .button-row:nth-child(6) .Button:nth-child(3) {
   background: #7dccda;
+}
+@keyframes animateButton {
+  from {bottom: 1px;}
+  to {bottom:}
 }
