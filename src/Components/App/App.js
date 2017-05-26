@@ -15,7 +15,7 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		window.addEventListener('keydown', this.handleKeyPress.bind(this));
+		window.addEventListener('keypress', this.handleKeyPress.bind(this));
 	}
 	
 	animateButton(wordLabel){
@@ -26,50 +26,59 @@ class App extends Component {
 	}
 
 	handleKeyPress(e) {
-		let keyPressed = e.key;
+		let keyPressed = e.key || e.keyCode;
 		let pressedValue;
 		let pressedLabel;
 		let wordLabel;
-		console.log(keyPressed)
 		if(!e.shiftKey){
 			switch (keyPressed){
 				case '0':
+				case 48:
 					pressedValue = pressedLabel = 0;
 					wordLabel = 'zero';
 					break;
 				case '1':
+				case 49:
 					pressedValue = pressedLabel = 1;
 					wordLabel = 'one';
 					break;
 				case '2':
+				case 50:
 					pressedValue = pressedLabel = 2;
 					wordLabel = 'two';
 					break;
 				case '3':
+				case 51:
 					pressedValue = pressedLabel = 3;
 					wordLabel = 'three';
 					break;
 				case '4':
+				case 52:
 					pressedValue = pressedLabel = 4;
 					wordLabel = 'four';
 					break;
 				case '5':
+				case 53:
 					pressedValue = pressedLabel = 5;
 					wordLabel = 'five';
 					break;
 				case '6':
+				case 54:
 					pressedValue = pressedLabel = 6;
 					wordLabel = 'six';
 					break;
 				case '7':
+				case 55:
 					pressedValue = pressedLabel = 7;
 					wordLabel = 'seven';
 					break;
 				case '8':
+				case 56:
 					pressedValue = pressedLabel = 8;
 					wordLabel = 'eight';
 					break;
 				case '9':
+				case 57:
 					pressedValue = pressedLabel = 9;
 					wordLabel = 'nine';
 					break;
@@ -77,34 +86,45 @@ class App extends Component {
 				case 'Backspace':
 				case 'Escape':
 				case 'Delete':
+				case 99:
+				case 8:
+				case 27:
 					pressedValue = pressedLabel = 'C';
 					wordLabel = 'cancel';
 					break;
 				case '/':
+				case 47:
 					pressedValue = '/';
 					pressedLabel = '÷';
 					wordLabel = 'divide';
 					break;
 				case '*':
+				case 42:
 					pressedValue = '*';
 					pressedLabel = 'x';
 					wordLabel = 'multiply';
 					break;
 				case '-':
+				case 45:
 					pressedValue = pressedLabel = '-';
 					wordLabel = 'minus';
 					break;
 				case '+':
+				case 43:
 					pressedValue = pressedLabel = '+';
 					wordLabel = 'plus';
 					break;	
 				case '=':
 				case 'Enter':
+				case 61:
+				case 13:
 					pressedValue = pressedLabel = '=';
 					wordLabel = 'equals';
 					break;
 				case '.':
 				case ',':
+				case 44:
+				case 46:
 					pressedValue = pressedLabel = '.';
 					wordLabel = 'dot';
 					break;			
@@ -114,6 +134,7 @@ class App extends Component {
 		} else if (e.shiftKey) {
 			switch (keyPressed){
 				case '+':
+				case 61:
 					pressedValue = pressedLabel = '+';
 					wordLabel = 'plus';
 					break;			
